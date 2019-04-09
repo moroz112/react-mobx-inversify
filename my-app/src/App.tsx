@@ -7,7 +7,8 @@ import './App.css';
 
 @observer
 class App extends React.Component {
-  @resolve
+
+  @resolve(SomeStore)
   private readonly _someStore: SomeStore;
 
   render() {
@@ -24,7 +25,7 @@ class App extends React.Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            oikoj
+            {this._someStore.somevalue}
           </a>
         </header>
       </div>

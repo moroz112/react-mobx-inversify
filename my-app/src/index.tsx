@@ -6,10 +6,14 @@ import 'reflect-metadata';
 import './index.css';
 import App from './App';
 import { SomeStore } from './someStore';
+import { someModule } from "./some-module";
 import * as serviceWorker from './serviceWorker';
 
 const myContainer = new Container();
-myContainer.bind(SomeStore).toSelf().inSingletonScope();
+
+myContainer.load(
+    someModule
+);
 
 ReactDOM.render(
     <Provider container={myContainer}>

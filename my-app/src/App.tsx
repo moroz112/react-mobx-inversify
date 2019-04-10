@@ -3,6 +3,7 @@ import { resolve } from 'inversify-react'
 import logo from './logo.svg';
 import { SomeStore } from './someStore';
 import { observer } from 'mobx-react';
+import { NewsCollection } from './news-collection/news-collection.component';
 import './App.css';
 
 @observer
@@ -19,14 +20,8 @@ class App extends React.Component {
           <p>
             Edit <code>src/App.tsx</code> and save to reload.
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
             {this._someStore.somevalue}
-          </a>
+            <NewsCollection />
         </header>
       </div>
     );

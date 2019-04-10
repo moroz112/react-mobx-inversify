@@ -5,18 +5,11 @@ import { Provider } from 'inversify-react';
 import 'reflect-metadata';
 import './index.css';
 import App from './App';
-import { SomeStore } from './someStore';
-import { someModule } from "./some-module";
+import { rootContainer } from './root.module';
 import * as serviceWorker from './serviceWorker';
 
-const myContainer = new Container();
-
-myContainer.load(
-    someModule
-);
-
 ReactDOM.render(
-    <Provider container={myContainer}>
+    <Provider container={rootContainer}>
         <App/>
     </Provider>,
     document.getElementById('root'));

@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import { SomeStore } from './someStore';
 import { observer } from 'mobx-react';
 import { NewsCollection } from './news-collection/news-collection.component';
-import './App.css';
+import './App.scss';
 
 @observer
 class App extends React.Component {
@@ -15,14 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-            {this._someStore.somevalue}
-            <NewsCollection />
-        </header>
+        <NewsCollection />
       </div>
     );
   }

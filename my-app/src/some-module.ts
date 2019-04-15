@@ -6,5 +6,5 @@ import { NewsCollectionStore } from './news-collection/news-collection.store';
 
 export const someModule = new ContainerModule((bind: interfaces.Bind) => {
     bind<SomeStore>(SomeStore).toSelf().inSingletonScope();
-    bind<NewsCollectionStore>(NewsCollectionStore).toSelf().inSingletonScope()
+    bind<NewsCollectionStore>(NewsCollectionStore).toSelf().inSingletonScope();
 });

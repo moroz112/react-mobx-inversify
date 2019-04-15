@@ -3,7 +3,13 @@ import { resolve } from 'inversify-react';
 import { observer } from 'mobx-react';
 import { action } from 'mobx';
 
-import { NewsCollectionStore } from './news-collection.store';
+import { NewsCollectionStore, NewsArticle } from './news-collection.store';
+
+import {MainNewsComponent} from "../main-news/main-news.component";
+
+import './news-collection.scss';
+import { map, switchMap } from "rxjs/operators";
+import { interval, Observable } from "rxjs";
 
 @observer
 export class NewsCollection extends React.Component {
@@ -15,18 +21,32 @@ export class NewsCollection extends React.Component {
     private readonly _newsCollectionStore: NewsCollectionStore;
 
     render() {
-        const { collection, updateNewsArticles } = this._newsCollectionStore;
-        const someStr = collection ? JSON.stringify(collection) : null;
+        const { collection, mainNews } = this._newsCollectionStore;
 
         return (
-            <div>
+            <div className="collection-wrapper">
                 <div className="search">
-                    <input type="text" ref={this._searchInputRef} />
+                    <input
+                        type="text"
+                        ref={this._searchInputRef}
+                        // onChange={event => this._newsCollectionStore.updateNewsArticles(event.target.value)}
+                    />
                 </div>
                 <div className="search-button">
                     <button onClick={this.searchArticles}>Search</button>
                 </div>
-                Collection: {someStr}
+                <MainNewsComponent news={mainNews} />
+                <div className="collection">
+                    {collection && collection.map(item =>
+                        (
+                            <div className="collection-item" key={item.title}>
+                                <div className="collection-item__title">{item.title}</div>
+                                <img className="collection-item__image" src={item.urlToImage} />
+                                <div className="collection-item__description">{item.description}</div>
+                            </div>
+                        )
+                    )}
+                </div>
             </div>
         )
     }
